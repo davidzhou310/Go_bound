@@ -16,6 +16,7 @@ def main():
     pygame.display.flip()
     is_black, move = True, 0
 
+    #add beginning here
     while go_bound.running:
         clock.tick(FPS)
         for event in pygame.event.get():
@@ -39,6 +40,7 @@ def main():
                     #all place has been occupied
                     if move == board.row * board.col:
                         go_bound.running = False
+    #add ending here 
     pygame.quit()
 
 
