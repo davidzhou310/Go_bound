@@ -1,4 +1,3 @@
-
 import init_board
 import game
 import pygame
@@ -57,6 +56,7 @@ def main():
                             go_bound.running = False
                         elif input == 2:
                             board.reset()
+                            is_black = True
                             go_bound = game.game(board)
                             screen = go_bound.init_game()
                             board.draw(screen)
