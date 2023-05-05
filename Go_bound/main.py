@@ -1,4 +1,4 @@
-from turtle import width
+
 import init_board
 import game
 import pygame
@@ -38,7 +38,7 @@ def main():
                     board.draw(screen)
                     pygame.display.flip()
                     message = go_bound.is_win()
-
+ 
                     #all place has been occupied
                     if move == board.row * board.col:
                         message = 'tie'
@@ -61,8 +61,6 @@ def main():
                             screen = go_bound.init_game()
                             board.draw(screen)
                             pygame.display.flip()
-
-
     pygame.quit()
 
 

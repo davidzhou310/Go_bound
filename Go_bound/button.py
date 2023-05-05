@@ -1,5 +1,4 @@
 import pygame
-import game
 
 button_width = 100
 button_height = 100
