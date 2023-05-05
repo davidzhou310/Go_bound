@@ -18,10 +18,31 @@ class game(object):
         pygame.display.set_caption("GO_Bound")
         screen = pygame.display.set_mode((width, height))
         screen.fill([125, 95, 24])
-        pygame.mixer.music.load("music.mp3")
+        pygame.mixer.music.load("music/music.mp3")
         pygame.mixer.music.play(-1)
         return screen
 
+    def end_game_message(self, message, screen):
+        font_style = "image/Sigmar-Regular.ttf"
+        font = pygame.font.Font(font_style, 72)
+        if message == 'Black' or message == 'White':
+            text = font.render(message + '   Wins', True, red_color)
+        else:
+            text = font.render(message, True, red_color)
+        text_rect = text.get_rect(center = (width / 2, height / 3))
+        screen.blit(text, text_rect)
+
+    def end_game_instruction(self, exit_rect, restart_rect):
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return 0
+                elif event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed():
+                        nx, ny = pygame.mouse.get_pos()
+                        if exit_rect.collidepoint(nx, ny):
+                            return 1
+                        elif restart_rect.collidepoint(nx, ny):
+                            return 2
 
     def is_win(self):
         for n in range(self.width):
@@ -33,7 +54,7 @@ class game(object):
                     winning_flag += 1
                     if winning_flag == winning:
                         print("Black Wins")
-                        return True
+                        return 'Black'
                 else:
                     winning_flag = 0
             winning_flag = 0
@@ -42,7 +63,7 @@ class game(object):
                     winning_flag += 1
                     if winning_flag == winning:
                         print("White Wins")
-                        return True
+                        return "White"
                 else:
                     winning_flag = 0
             winning_flag = 0
@@ -56,7 +77,7 @@ class game(object):
                         x += 1
                         if winning_flag == winning:
                             print("Black Wins")
-                            return True
+                            return 'Black'
                     else:
                         winning_flag = 0
             winning_flag = 0
@@ -68,7 +89,7 @@ class game(object):
                         x += 1
                         if winning_flag == winning:
                             print("White Wins")
-                            return True
+                            return "White"
                     else:
                         winning_flag = 0
             winning_flag = 0
@@ -83,7 +104,7 @@ class game(object):
                         c += 1
                         if winning_flag == winning:
                             print("Black Wins")
-                            return True
+                            return 'Black'
                     else:
                         winning_flag = 0
             winning_flag = 0
@@ -96,7 +117,7 @@ class game(object):
                         c += 1
                         if winning_flag == winning:
                             print("White Wins")
-                            return True
+                            return 'White'
                     else:
                         winning_flag = 0
             winning_flag = 0
@@ -109,7 +130,7 @@ class game(object):
                         c -= 1
                         if winning_flag == winning:
                             print("Black Wins")
-                            return True
+                            return 'Black'
                     else:
                         winning_flag = 0
             winning_flag = 0
@@ -122,12 +143,12 @@ class game(object):
                         c -= 1
                         if winning_flag == winning:
                             print("White Wins")
-                            return True
+                            return 'White'
                     else:
                         winning_flag = 0
             winning_flag = 0
 
-        return False
+        return ''
 
 
                     

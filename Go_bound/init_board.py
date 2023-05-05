@@ -12,6 +12,7 @@ board_width = 15
 #define color as global
 black_color = [0, 0, 0]
 white_color = [255, 255, 255]
+red_color = [200, 20, 60]
 
 
 class board(object):
@@ -23,7 +24,8 @@ class board(object):
     #reset the board
     def reset(self):
         for r in range(self.row):
-            r = [empty] * board_width
+            for c in range(self.col):
+                self.game_board[r][c] = empty
 
     #check location is empty
     def is_empty(self, row, col):
@@ -31,7 +33,7 @@ class board(object):
 
     #place a piece
     def move(self, row, col, is_black):
-        pieces = pygame.mixer.Sound("down.wav")
+        pieces = pygame.mixer.Sound("music/down.wav")
         pieces.play()
         self.game_board[row][col] = black if is_black else white
     
@@ -60,16 +62,3 @@ class board(object):
                     pygame.draw.circle(screen, black_color, [40 * (c + 1), 40 * (r + 1)], 18, 0)
                 elif self.game_board[r][c] == white:
                     pygame.draw.circle(screen, white_color, [40 * (c + 1), 40 * (r + 1)], 18, 0)
-
-
-        
-        
-
-
-
-
-
-    
-            
-
-
